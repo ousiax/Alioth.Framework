@@ -1,2 +1,2 @@
-# Alioth.Framework
-A light IoC container that implemented with .NET
+# Alioth Framework
+A lightweight IoC container that implemented with .NET.
