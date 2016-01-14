@@ -7,8 +7,8 @@
 
 using System;
 
-namespace Alioth.Framework {
+namespace Alioth.Framework.Config {
 
-    public static class ContainerExtension {
+    public class Container {
     }
 }

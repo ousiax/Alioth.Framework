@@ -7,8 +7,7 @@
 
 using System;
 
-namespace Alioth.Framework {
-
-    public static class ContainerExtension {
+namespace Alioth.Framework.Config {
+    public class XmlAsteroid {
     }
 }

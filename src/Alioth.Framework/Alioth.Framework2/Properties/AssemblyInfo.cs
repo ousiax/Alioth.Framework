@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,12 +7,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Alioth.Framework")]
-[assembly: AssemblyDescription("A lightweight IoC container that implemented with .NET")]
+[assembly: AssemblyDescription("A lightweight IoC container.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("qqbuby@gmail.com")]
 [assembly: AssemblyProduct("Alioth.Framework")]
-[assembly: AssemblyCopyright("Copyright (c) 2016 Roy Xu")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright (c) 2015 Roy Xu")]
+[assembly: AssemblyTrademark("Alioth.Framework")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -20,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("63f3794b-b8b5-45bd-9ea5-2aef8fc5fd86")]
+[assembly: Guid("5eb84c5d-5199-4c5d-89fa-4e4377835875")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +33,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.9.0")]
+[assembly: AssemblyFileVersion("1.0.9.0")]
+[assembly: NeutralResourcesLanguage("")]
+

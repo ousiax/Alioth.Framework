@@ -1,7 +1,10 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2016 Roy Xu
+ * Copyright (c) 2015 Roy Xu
+ *
+ * @since 12/31/2015 19:33:18
+ * @author qqbuby
  *
 */
 
