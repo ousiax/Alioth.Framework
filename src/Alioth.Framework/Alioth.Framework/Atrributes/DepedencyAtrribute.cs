@@ -33,5 +33,14 @@ namespace Alioth.Framework {
 
         public DepedencyAtrribute() {
         }
+
+        public DepedencyAtrribute(Type serviceType) {
+            #region precondition
+            if (serviceType == null) {
+                throw new ArgumentNullException("serviceType");
+            }
+            #endregion
+            this.serviceType = serviceType;
+        }
     }
 }

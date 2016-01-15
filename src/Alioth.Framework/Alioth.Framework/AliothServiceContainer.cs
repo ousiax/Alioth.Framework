@@ -41,28 +41,11 @@ namespace Alioth.Framework {
             return this;
         }
 
-        private static IObjectBuilder GetBuilder(Type objectType, ServiceTypeAtrribute[] attrites) {
-            Boolean isSingleton = attrites.Any(o => o.ReferenceType == ReferenceType.Singleton);
-            IObjectBuilder builder;
-            if (isSingleton) {
-                builder = new SingletonBuilder(objectType);
-            } else {
-                builder = new ObjectBuilder(objectType);
-            }
-            return builder;
-        }
-
         public IAliothServiceContainer Apply<T, O>(O instance, string name, string version) where O : T {
             var key = new ServiceKey(typeof(T), name, version);
-            var builder = SingletonBuilder.Create(instance);
+            var builder = SingletonBuilder.Create(instance); //TODO create object build with IoC container.
             AddBuilder(key, builder);
             return this;
-        }
-
-        private void AddBuilder(ServiceKey key, IObjectBuilder builder) {
-            if (!builderContainer.TryAdd(key, builder)) {
-                throw new ArgumentException(String.Format("An element with the same key:\"{0}\", already exists in the AliothServiceContainer:\"{1}\"", key, Description));
-            }
         }
 
         public IAliothServiceContainer CreateChild(string description = null) {
@@ -93,6 +76,24 @@ namespace Alioth.Framework {
                 obj = parent.GetService(serviceType);
             }
             return obj;
+        }
+
+        private static IObjectBuilder GetBuilder(Type objectType, ServiceTypeAtrribute[] attrites) {
+            Boolean isSingleton = attrites.Any(o => o.ReferenceType == ReferenceType.Singleton);
+            IObjectBuilder builder;
+            if (isSingleton) {
+                builder = new SingletonBuilder(objectType); //TODO create object build with IoC container.
+            } else {
+                builder = new ObjectBuilder(objectType); //TODO create object build with IoC container.
+            }
+            return builder;
+        }
+
+        private void AddBuilder(ServiceKey key, IObjectBuilder builder) {
+            builder.ConnectContainer(this); //TODO create object build with IoC container.
+            if (!builderContainer.TryAdd(key, builder)) {
+                throw new ArgumentException(String.Format("An element with the same key:\"{0}\", already exists in the AliothServiceContainer:\"{1}\"", key, Description));
+            }
         }
     }
 }

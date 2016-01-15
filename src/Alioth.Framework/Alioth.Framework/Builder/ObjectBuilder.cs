@@ -13,6 +13,7 @@ using System.Reflection;
 namespace Alioth.Framework.Builder {
     [DebuggerDisplay("Type={objectType}")]
     internal class ObjectBuilder : IObjectBuilder, IAliothServiceProvider {
+        private IAliothServiceContainer container;
         private Type objectType;
 
         public ObjectBuilder(Type objectType) {
@@ -42,12 +43,21 @@ namespace Alioth.Framework.Builder {
             }
         }
 
+        public void ConnectContainer(IAliothServiceContainer container) {
+            #region precondition
+            if (container == null) {
+                throw new ArgumentNullException("container");
+            }
+            #endregion
+            this.container = container;
+        }
+
         public object GetService(Type serviceType) {
-            throw new NotImplementedException();
+            return container.GetService(serviceType);
         }
 
         public object GetService(Type serviceType, string name, string version) {
-            throw new NotImplementedException();
+            return container.GetService(serviceType, name, version);
         }
 
         private Object Create(ConstructorInfo ctor) {

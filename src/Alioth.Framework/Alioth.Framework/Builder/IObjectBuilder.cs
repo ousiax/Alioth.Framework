@@ -8,7 +8,7 @@
 using System;
 
 namespace Alioth.Framework.Builder {
-    internal interface IObjectBuilder {
+    internal interface IObjectBuilder : IAliothServiceContainerConnector {
         Object Build();
     }
 }
