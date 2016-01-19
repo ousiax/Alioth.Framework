@@ -6,6 +6,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace Alioth.Framework {
 
@@ -14,10 +15,10 @@ namespace Alioth.Framework {
 
         IAliothServiceContainer Parent { get; }
 
-        IAliothServiceContainer Apply(Type objectType, String name, String version);
+        IAliothServiceContainer Apply(Type objectType, IDictionary<String, String> parameters, IDictionary<String, String> properties, String name, String version);
 
         IAliothServiceContainer Apply<T, O>(O instance, String name, String version) where O : T;
 
-        IAliothServiceContainer CreateChild(String name = null);
+        IAliothServiceContainer CreateChild(String description = null);
     }
 }

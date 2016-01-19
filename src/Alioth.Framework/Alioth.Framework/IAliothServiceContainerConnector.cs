@@ -8,6 +8,6 @@
 
 namespace Alioth.Framework {
     public interface IAliothServiceContainerConnector {
-        void ConnectContainer(IAliothServiceContainer container);
+        void Connect(IAliothServiceContainer container);
     }
 }

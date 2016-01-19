@@ -7,10 +7,13 @@
 
 using System;
 
-namespace Alioth.Framework.Builder {
+namespace Alioth.Framework {
     internal class SingletonBuilder : ObjectBuilder {
         private Object instance;
         private Object lockObj = new Object();
+
+        public SingletonBuilder() {
+        }
 
         public SingletonBuilder(Type objectType) : base(objectType) {
         }

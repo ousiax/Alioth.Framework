@@ -6,9 +6,16 @@
 */
 
 using System;
+using System.Collections.Generic;
 
-namespace Alioth.Framework.Builder {
+namespace Alioth.Framework {
     internal interface IObjectBuilder : IAliothServiceContainerConnector {
+        Type ObjectType { get; set; }
+
+        IDictionary<String, String> Parameters { get; }
+
+        IDictionary<String, String> Properties { get; }
+
         Object Build();
     }
 }

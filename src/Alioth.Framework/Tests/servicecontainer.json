@@ -1,0 +1,43 @@
+﻿{
+  "Services": [
+    {
+      "Type": "Tests.AdditionService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Tests.SubtractionService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Tests.CalculatorService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Tests.MultiCtorsService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "MultiCtors",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Tests.MultiDepedencyCtorsService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "MultiDepedencyCtors",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Tests.MessageService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "",
+      "Version": "",
+      "Description": "",
+      "Parameters": {
+        "message": "foobar"
+      }
+    }
+  ]
+}

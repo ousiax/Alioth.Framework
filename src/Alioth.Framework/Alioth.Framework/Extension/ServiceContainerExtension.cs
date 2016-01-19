@@ -11,11 +11,15 @@ namespace Alioth.Framework {
 
     public static class ServiceContainerExtension {
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Type objectType) {
-            return container.Apply(objectType, null, null);
+            return container.Apply(objectType, null, null, null, null);
         }
 
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Type objectType, string name) {
-            return container.Apply(objectType, name, null);
+            return container.Apply(objectType, null, null, name, null);
+        }
+
+        public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Type objectType, string name, string version) {
+            return container.Apply(objectType, null, null, name, version);
         }
 
         public static IAliothServiceContainer Apply<T, O>(this IAliothServiceContainer container, O instance) where O : T {

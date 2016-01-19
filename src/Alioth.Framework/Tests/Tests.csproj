@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAliothServiceContainer_Test.cs" />
+    <Compile Include="TestAlioth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestAliothConf.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alioth.Framework.Config\Alioth.Framework.Config.csproj">
@@ -58,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="servicecontainer.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
