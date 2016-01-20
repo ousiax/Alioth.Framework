@@ -33,8 +33,8 @@ namespace Alioth.Framework {
             }
             #endregion
             this.type = type;
-            this.name = name ?? String.Empty;
-            this.version = version ?? String.Empty;
+            this.name = (name ?? String.Empty).ToLower();
+            this.version = (version ?? String.Empty).ToLower();
 
             this.hashCode = 0;
             int hashCode = this.type.GetHashCode();

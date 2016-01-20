@@ -16,7 +16,22 @@
       "Type": "Tests.CalculatorService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Name": "",
       "Version": "",
-      "Description": ""
+      "Description": "",
+      "Properties": {
+        "X": "100",
+        "Y": "200"
+      }
+    },
+    {
+      "Type": "Tests.CalculatorService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "PropertyKeyNotFound",
+      "Version": "",
+      "Description": "",
+      "Properties": {
+        "X": "100",
+        "Y": "200",
+        "Z": "200"
+      }
     },
     {
       "Type": "Tests.MultiCtorsService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -38,6 +53,27 @@
       "Parameters": {
         "message": "foobar"
       }
+    },
+    {
+      "Type": "Tests.MessageService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "foobar",
+      "Version": "foobar",
+      "Description": "",
+      "Parameters": {
+        "message": "foobar"
+      }
+    },
+    {
+      "Type": "Tests.KeyNotFoundExceptionCalculatorService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "KeyNotFoundException",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Tests.ParameterInjectionCalculatorService, Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "ParameterInjection",
+      "Version": "",
+      "Description": ""
     }
   ]
 }

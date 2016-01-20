@@ -7,6 +7,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using Alioth.Framework.Config;
 using Newtonsoft.Json;
 
@@ -29,7 +30,6 @@ namespace Alioth.Framework {
             return container;
         }
 
-
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Stream stream) {
             #region precondition
             if (stream == null) {
@@ -48,8 +48,18 @@ namespace Alioth.Framework {
             var json = reader.ReadToEnd();
             var serviceContainer = JsonConvert.DeserializeObject<ServiceContainer>(json);
             foreach (var dep in serviceContainer.Services) {
-                Type type = Type.GetType(dep.Type); //TODO issue a warning message about System.Reflection.TargetInvocationException ...
-                container.Apply(type, dep.Parameters, dep.Properties, dep.Name, dep.Version);
+                try {
+                    Type type = Type.GetType(dep.Type);
+                    container.Apply(type, dep.Parameters, dep.Properties, dep.Name, dep.Version);
+                } catch (TargetInvocationException tie) {
+                    throw new Exception(String.Format("Type load failure, '{0}'", dep.Type), tie);
+                } catch (ArgumentException ae) {
+                    throw new Exception(String.Format("Type load failure, '{0}'", dep.Type), ae);
+                } catch (TypeLoadException tle) {
+                    throw new Exception(String.Format("Type load failure, '{0}'", dep.Type), tle);
+                } catch (BadImageFormatException bfe) {
+                    throw new Exception(String.Format("Type load failure, '{0}'", dep.Type), bfe);
+                }
             }
             return container;
         }

@@ -12,15 +12,18 @@ namespace Alioth.Framework {
     public static class ServiceProviderExtension {
 
         public static T GetService<T>(this IAliothServiceProvider provider) {
-            return (T)provider.GetService(typeof(T), null, null);
+            var s = provider.GetService(typeof(T), null, null);
+            return s == null ? default(T) : (T)s;
         }
 
         public static T GetService<T>(this IAliothServiceProvider provider, String name) {
-            return (T)provider.GetService(typeof(T), name, null);
+            var s = (T)provider.GetService(typeof(T), name, null);
+            return s == null ? default(T) : (T)s;
         }
 
         public static T GetService<T>(this IAliothServiceProvider provider, String name, String version) {
-            return (T)provider.GetService(typeof(T), name, version);
+            var s = (T)provider.GetService(typeof(T), name, version);
+            return s == null ? default(T) : (T)s;
         }
     }
 }

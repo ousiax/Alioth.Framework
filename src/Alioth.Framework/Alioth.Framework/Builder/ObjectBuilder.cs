@@ -69,9 +69,9 @@ namespace Alioth.Framework {
             if (ctors.Length > 1) {
                 var ctors2 = ctors.Where(o => o.GetCustomAttributes(false).Any(p => p.GetType() == typeof(DepedencyAtrribute))).ToArray();
                 if (ctors2.Length > 1) {
-                    throw new InvalidOperationException("Too many constructors that are annotated with Alioth.Framework.DepedencyAtrribute.");
+                    throw new InvalidOperationException(String.Format("Too many constructors annotated with Alioth.Framework.DepedencyAtrribute. Type: {0}", ObjectType.AssemblyQualifiedName));
                 } else if (ctors2.Length == 0) {
-                    throw new InvalidOperationException("Too many constructors but no one is annotated with Alioth.Framework.DepedencyAtrribute.");
+                    throw new InvalidOperationException(String.Format("Too many constructors but no one is annotated with Alioth.Framework.DepedencyAtrribute. Type: {0}", ObjectType.AssemblyQualifiedName));
                 }
                 return Create(ctors2[0]);
             } else {
@@ -105,8 +105,9 @@ namespace Alioth.Framework {
                 args[i] = value;
             }
             Object instance = ctor.Invoke(args);
-            InjectContextContainer(instance);
+            ConnectContainer(instance);
             InjectDepedencyProperties(instance);
+            InjectProperties(instance);
             return instance;
         }
 
@@ -122,7 +123,7 @@ namespace Alioth.Framework {
                 } else if ((pi.Attributes & ParameterAttributes.HasDefault) == ParameterAttributes.HasDefault) {
                     value = pi.DefaultValue;
                 } else {
-                    throw new ArgumentException(pi.Name, String.Format("Parameter \"{0}\" should be provided.", pi.Name));
+                    throw new ArgumentException(pi.Name, String.Format("Parameter \"{0}\" must be provided. Type: {1}", pi.Name, ObjectType.AssemblyQualifiedName));
                 }
             } else {
                 DepedencyAtrribute depAttr = depAttrs[0];
@@ -130,6 +131,43 @@ namespace Alioth.Framework {
             }
 
             return value;
+        }
+
+        private void ConnectContainer(object instance) {
+            IAliothServiceContainerConnector conn = instance as IAliothServiceContainerConnector;
+            if (conn != null) {
+                conn.Connect(this.container);
+            }
+        }
+
+        private void InjectDepedencyProperties(object instance) {
+            PropertyInfo[] properties = objectType.GetProperties(BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => p.GetCustomAttributes(false).Any(s => s.GetType() == typeof(DepedencyAtrribute)))
+                .ToArray();
+            foreach (PropertyInfo p in properties) {
+                DepedencyAtrribute attr = (DepedencyAtrribute)p.GetCustomAttributes(typeof(DepedencyAtrribute), false)[0];
+                var v = this.GetService(attr.ServiceType, attr.ServiceName, attr.ServiceVersion);
+                if (v == null) {
+                    throw new KeyNotFoundException(
+                        String.Format(
+                            "The sepecified depedency service with a key '{0}' could not be found. Type: {1}",
+                            ServiceKey.Create(attr.ServiceType, attr.ServiceName, attr.ServiceVersion), ObjectType.AssemblyQualifiedName));
+                }
+                p.SetValue(instance, v, null);
+            }
+        }
+
+        private void InjectProperties(object instance) {
+            if (this.Properties.Count > 0) {
+                Type t = instance.GetType();
+                foreach (var item in this.Properties) {
+                    PropertyInfo pi = t.GetProperty(item.Key, BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+                    if (pi == null) {
+                        throw new KeyNotFoundException(String.Format("Invalid [Properites] Configuration: could not found a property with the specified name '{0}'. Type: {1}", item.Key, ObjectType.AssemblyQualifiedName));
+                    }
+                    pi.SetValue(instance, ParseValue(pi.PropertyType, item.Value), null);
+                }
+            }
         }
 
         private static Object ParseValue(Type type, string rawString) {
@@ -180,24 +218,6 @@ namespace Alioth.Framework {
             }
 
             return value;
-        }
-
-        private void InjectContextContainer(object instance) {
-            IAliothServiceContainerConnector conn = instance as IAliothServiceContainerConnector;
-            if (conn != null) {
-                conn.Connect(this.container);
-            }
-        }
-
-        private void InjectDepedencyProperties(object instance) {
-            PropertyInfo[] properties = objectType.GetProperties(BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                .Where(p => p.GetCustomAttributes(false).Any(s => s.GetType() == typeof(DepedencyAtrribute)))
-                .ToArray();
-            foreach (PropertyInfo p in properties) {
-                DepedencyAtrribute attr = (DepedencyAtrribute)p.GetCustomAttributes(typeof(DepedencyAtrribute), false)[0];
-                var v = this.GetService(attr.ServiceType, attr.ServiceName, attr.ServiceVersion); //TODO consider to issue a warning message when the depedency service was not found.
-                p.SetValue(instance, v, null);
-            }
         }
     }
 }

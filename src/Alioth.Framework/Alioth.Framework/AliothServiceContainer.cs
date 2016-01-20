@@ -86,9 +86,9 @@ namespace Alioth.Framework {
 
             Boolean isSingleton = attributes.Any(o => o.ReferenceType == ReferenceType.Singleton);
             if (isSingleton) {
-                builder = new SingletonBuilder();
+                builder = new SingletonBuilder(); //TODO create object build with IoC container.
             } else {
-                builder = new ObjectBuilder();
+                builder = new ObjectBuilder(); //TODO create object build with IoC container.
             }
             builder.ObjectType = objectType;
             if (parameters != null) {

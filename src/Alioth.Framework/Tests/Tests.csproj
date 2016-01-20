@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="TestAlioth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestAliothConf.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alioth.Framework.Config\Alioth.Framework.Config.csproj">
