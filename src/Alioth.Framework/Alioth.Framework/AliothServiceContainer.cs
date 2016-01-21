@@ -11,20 +11,41 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Alioth.Framework {
-
+    /// <summary>
+    /// Represents a IoC container.
+    /// </summary>
     public sealed class AliothServiceContainer : IAliothServiceContainer {
         private IAliothServiceContainer parent;
         private ConcurrentDictionary<ServiceKey, IObjectBuilder> builderContainer;
-
+       
+        /// <summary>
+        /// Gets or sets the description of the IoC container.
+        /// </summary>
         public String Description { get; set; }
 
+        /// <summary>
+        /// Gets the parent IoC cotnainer.
+        /// </summary>
         public IAliothServiceContainer Parent { get { return parent; } }
 
+        /// <summary>
+        /// Initializes a new instance of the class <c>Alioth.Framework.AliothServiceContainer</c> with a specified parent IoC container <paramref name="parent"/>.
+        /// </summary>
+        /// <param name="parent">The parent IoC cotnainer of the new IoC container.</param>
         public AliothServiceContainer(IAliothServiceContainer parent = null) {
             this.builderContainer = new ConcurrentDictionary<ServiceKey, IObjectBuilder>();
             this.parent = parent;
         }
 
+        /// <summary>
+        /// Applys a service object type that used to create service objects.
+        /// </summary>
+        /// <param name="objectType">A <c>System.Type</c> that specifies the service object type to create service object.</param>
+        /// <param name="parameters">A <c>IDictionary&lt;String, String^gt;</c> that specifies a dictionary of the dependency constructor of the service object type.</param>
+        /// <param name="properties">A <c>IDictionary&lt;String, String^gt;</c> specifies a dictionary to set properties of the service object.</param>
+        /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
+        /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
+        /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
         public IAliothServiceContainer Apply(Type objectType, IDictionary<String, String> parameters, IDictionary<String, String> properties, string name, string version) {
             #region precondition
             if (objectType == null) { throw new ArgumentNullException("objectType"); }
@@ -44,6 +65,15 @@ namespace Alioth.Framework {
             return this;
         }
 
+        /// <summary>
+        /// Applys a singleton service object.
+        /// </summary>
+        /// <typeparam name="T">The service type of the service object.</typeparam>
+        /// <typeparam name="O">The type of the service object.</typeparam>
+        /// <param name="instance">The service object.</param>
+        /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
+        /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
+        /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
         public IAliothServiceContainer Apply<T, O>(O instance, string name, string version) where O : T {
             var key = new ServiceKey(typeof(T), name, version);
             var builder = SingletonBuilder.Create(instance); //TODO create object build with IoC container.
@@ -51,10 +81,20 @@ namespace Alioth.Framework {
             return this;
         }
 
+        /// <summary>
+        /// Creates a child IoC container.
+        /// </summary>
+        /// <param name="description">A <c>System.String</c> that represents the description of the child IoC container.</param>
+        /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
         public IAliothServiceContainer CreateChild(string description = null) {
             return new AliothServiceContainer(this) { Description = description };
         }
 
+        /// <summary>
+        /// Gets the service object of the specified type.
+        /// </summary>
+        /// <param name="serviceType">An <c>System.Type</c> that specifies the type of service object to get.</param>
+        /// <returns>A service object of type serviceType.-or- null if there is no service object of type serviceType.</returns>
         public object GetService(Type serviceType) {
             Object obj = null;
 
@@ -68,6 +108,13 @@ namespace Alioth.Framework {
             return obj;
         }
 
+        /// <summary>
+        /// Gets the service object of the specified type.
+        /// </summary>
+        /// <param name="serviceType">An <c>System.Type</c> that specifies the type of service object to get.</param>
+        /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
+        /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
+        /// <returns>A service object of type serviceType.-or- null if there is no service object of type serviceType.</returns>
         public object GetService(Type serviceType, string name, string version) {
             Object obj = null;
 

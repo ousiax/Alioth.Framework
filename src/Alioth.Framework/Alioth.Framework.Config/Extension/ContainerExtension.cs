@@ -13,8 +13,17 @@ using Newtonsoft.Json;
 
 namespace Alioth.Framework {
 
+    /// <summary>
+    /// Defines a mechanism for appling service object type to a <c>Alioth.Framework.IAliothServiceContainer</c>.
+    /// </summary>
     public static class ContainerExtension {
 
+        /// <summary>
+        /// Applys a json service metadata configuration file.
+        /// </summary>
+        /// <param name="container">A <c>Alioth.Framework.IAliothServiceContainer</c> will be applied.</param>
+        /// <param name="path">The path of the metadata file.</param>
+        /// <returns>A object of <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, String path) {
             #region precondition
             if (path == null) {
@@ -30,6 +39,12 @@ namespace Alioth.Framework {
             return container;
         }
 
+        /// <summary>
+        /// Applys a json service metadata configuration file.
+        /// </summary>
+        /// <param name="container">A <c>Alioth.Framework.IAliothServiceContainer</c> will be applied.</param>
+        /// <param name="stream">A <c>System.IO.Stream</c> that represents a metadata file.</param>
+        /// <returns>A object of <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Stream stream) {
             #region precondition
             if (stream == null) {
@@ -39,6 +54,12 @@ namespace Alioth.Framework {
             return container.Apply(new StreamReader(stream));
         }
 
+        /// <summary>
+        /// Applys a json service metadata configuration file.
+        /// </summary>
+        /// <param name="container">A <c>Alioth.Framework.IAliothServiceContainer</c> will be applied.</param>
+        /// <param name="reader">A <c>System.IO.Stream</c> that represents a metadata file.</param>
+        /// <returns>A object of <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, StreamReader reader) {
             #region precondition
             if (reader == null) {

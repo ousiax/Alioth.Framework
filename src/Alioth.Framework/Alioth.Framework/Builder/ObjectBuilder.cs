@@ -13,6 +13,9 @@ using System.Linq;
 using System.Reflection;
 
 namespace Alioth.Framework {
+    /// <summary>
+    /// Represents a service object builder to build service object.
+    /// </summary>
     [DebuggerDisplay("Type={objectType}")]
     internal class ObjectBuilder : IObjectBuilder, IAliothServiceProvider {
         private IAliothServiceContainer container;
@@ -20,29 +23,11 @@ namespace Alioth.Framework {
         private IDictionary<String, String> parameters;
         private IDictionary<String, String> properties;
 
-        [DepedencyAtrribute]
-        public ObjectBuilder() {
-            this.parameters = new Dictionary<String, String>();
-            this.properties = new Dictionary<String, String>();
-        }
-
-        public ObjectBuilder(Type objectType) : this() {
-            #region precondition
-            if (objectType == null) {
-                throw new ArgumentNullException("value");
-            }
-            if (!objectType.IsClass) {
-                throw new ArgumentOutOfRangeException("value", "The specified object type should be a concrete class.");
-            }
-            #endregion
-            this.objectType = objectType;
-        }
-
-        public IFormatProvider CutureInfo { get; private set; }
-
+        /// <summary>
+        /// Gets or sets the service object class type.
+        /// </summary>
         public Type ObjectType {
             get { return objectType; }
-
             set {
                 #region precondition
                 if (value == null) {
@@ -56,14 +41,48 @@ namespace Alioth.Framework {
             }
         }
 
+        /// <summary>
+        /// Gets the parameters dictioinary of the service object.
+        /// </summary>
         public IDictionary<String, String> Parameters {
             get { return this.parameters; }
         }
 
+        /// <summary>
+        /// Gets the properties dictioinary of the service object.
+        /// </summary>
         public IDictionary<String, String> Properties {
             get { return this.properties; }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the class <c>Alioth.Framework.ObjectBuilder</c>.
+        /// </summary>
+        public ObjectBuilder() {
+            this.parameters = new Dictionary<String, String>();
+            this.properties = new Dictionary<String, String>();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the class <c>Alioth.Framework.ObjectBuilder</c>.
+        /// </summary>
+        /// <param name="objectType">The service object class type.</param>
+        public ObjectBuilder(Type objectType) : this() {
+            #region precondition
+            if (objectType == null) {
+                throw new ArgumentNullException("value");
+            }
+            if (!objectType.IsClass) {
+                throw new ArgumentOutOfRangeException("value", "The specified object type should be a concrete class.");
+            }
+            #endregion
+            this.objectType = objectType;
+        }
+
+        /// <summary>
+        /// Builds a new instance of the service object.
+        /// </summary>
+        /// <returns>An object instance of the service object class.</returns>
         public virtual Object Build() {
             ConstructorInfo[] ctors = objectType.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
             if (ctors.Length > 1) {
@@ -216,7 +235,6 @@ namespace Alioth.Framework {
                     value = rawString;
                     break;
             }
-
             return value;
         }
     }
