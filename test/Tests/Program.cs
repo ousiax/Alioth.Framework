@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 Roy Xu
+ *
+*/
+
+using System;
 using System.Reflection;
 using NUnitLite;
 
