@@ -126,8 +126,8 @@ namespace Alioth.Framework {
             if (obj.GetType() == this.GetType()) {
                 ServiceKey key = (ServiceKey)obj;
                 return this.type.Equals(key.type)
-                    && this.name.Equals(key.name, StringComparison.InvariantCultureIgnoreCase)
-                    && this.version.Equals(key.version, StringComparison.InvariantCultureIgnoreCase);
+                    && this.name.Equals(key.name, StringComparison.OrdinalIgnoreCase)
+                    && this.version.Equals(key.version, StringComparison.OrdinalIgnoreCase);
             }
             return false;
         }

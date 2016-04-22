@@ -12,7 +12,9 @@ namespace Alioth.Framework.Config {
     /// <summary>
     /// Represents a service object metadata configuration.
     /// </summary>
+#if NET451
     [Serializable]
+#endif
     public class Service {
         private String type;
         private String name;

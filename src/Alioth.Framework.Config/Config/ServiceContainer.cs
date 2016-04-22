@@ -12,7 +12,9 @@ namespace Alioth.Framework.Config {
     /// <summary>
     /// Represents a service container that contains serivce metadata configuration.
     /// </summary>
+#if NET451
     [Serializable]
+#endif
     public class ServiceContainer {
         private List<Service> services;
 

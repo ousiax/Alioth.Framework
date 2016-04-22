@@ -30,7 +30,11 @@ namespace Alioth.Framework {
                 throw new ArgumentNullException("path");
             }
             if (!File.Exists(path)) {
+#if NET451
                 throw new FileNotFoundException("ContainerExtension.Apply: configuration file not be found.", path);
+#elif DOTNET5_4
+                throw new ArgumentException("ContainerExtension.Apply: configuration file not be found.", path);
+#endif
             }
             #endregion
             using (StreamReader reader = File.OpenText(path)) {
@@ -69,6 +73,10 @@ namespace Alioth.Framework {
             var json = reader.ReadToEnd();
             var serviceContainer = JsonConvert.DeserializeObject<ServiceContainer>(json);
             foreach (var dep in serviceContainer.Services) {
+#if DEBUG
+                Type type = Type.GetType(dep.Type);
+                container.Apply(type, dep.Parameters, dep.Properties, dep.Name, dep.Version);
+#else
                 try {
                     Type type = Type.GetType(dep.Type);
                     container.Apply(type, dep.Parameters, dep.Properties, dep.Name, dep.Version);
@@ -81,6 +89,7 @@ namespace Alioth.Framework {
                 } catch (BadImageFormatException bfe) {
                     throw new Exception(String.Format("Type load failure, '{0}'", dep.Type), bfe);
                 }
+#endif
             }
             return container;
         }

@@ -1,11 +1,4 @@
-﻿/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2016 Roy Xu
- *
-*/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -20,7 +13,7 @@ namespace Tests {
         [SetUp]
         public void Setup() {
             container = new AliothServiceContainer();
-            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "servicecontainer.json")) {
+            using (Stream stream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Tests.servicecontainer.json")) {
                 container.Apply(stream);
             }
         }
@@ -52,7 +45,7 @@ namespace Tests {
             Assert.Throws(typeof(KeyNotFoundException), () => {
                 container.GetService<ICalculatorService>("PropertyKeyNotFound");
             });
-            
+
         }
 
         [TestCase]

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Alioth.Framework {
     /// <summary>
@@ -17,7 +18,7 @@ namespace Alioth.Framework {
     public sealed class AliothServiceContainer : IAliothServiceContainer {
         private IAliothServiceContainer parent;
         private ConcurrentDictionary<ServiceKey, IObjectBuilder> builderContainer;
-       
+
         /// <summary>
         /// Gets or sets the description of the IoC container.
         /// </summary>
@@ -49,11 +50,19 @@ namespace Alioth.Framework {
         public IAliothServiceContainer Apply(Type objectType, IDictionary<String, String> parameters, IDictionary<String, String> properties, string name, string version) {
             #region precondition
             if (objectType == null) { throw new ArgumentNullException("objectType"); }
-            if (!objectType.IsClass) {
+#if NET451
+                if (!objectType.IsClass) {
+#elif DOTNET5_4
+            if (!objectType.GetTypeInfo().IsClass) {
+#endif
                 throw new ArgumentOutOfRangeException("objectType", "The specified object type should be a concrete class.");
             }
             #endregion
+#if NET451
             ServiceTypeAtrribute[] attributes = (ServiceTypeAtrribute[])objectType.GetCustomAttributes(typeof(ServiceTypeAtrribute), false);
+#elif DOTNET5_4
+            ServiceTypeAtrribute[] attributes = objectType.GetTypeInfo().GetCustomAttributes<ServiceTypeAtrribute>(false).ToArray();
+#endif
             if (attributes.Length == 0) {
                 throw new ArgumentException(String.Format("{0} should be to anotate with {1}", objectType.Name, attributes));
             }

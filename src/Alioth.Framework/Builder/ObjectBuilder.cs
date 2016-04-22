@@ -33,7 +33,11 @@ namespace Alioth.Framework {
                 if (value == null) {
                     throw new ArgumentNullException("value");
                 }
+#if NET451
                 if (!value.IsClass) {
+#elif DOTNET5_4
+                if (!value.GetTypeInfo().IsClass) {
+#endif
                     throw new ArgumentOutOfRangeException("value", "The specified object type should be a concrete class.");
                 }
                 #endregion
@@ -72,7 +76,11 @@ namespace Alioth.Framework {
             if (objectType == null) {
                 throw new ArgumentNullException("value");
             }
+#if NET451
             if (!objectType.IsClass) {
+#elif DOTNET5_4
+            if (!objectType.GetTypeInfo().IsClass) {
+#endif
                 throw new ArgumentOutOfRangeException("value", "The specified object type should be a concrete class.");
             }
             #endregion
@@ -160,11 +168,19 @@ namespace Alioth.Framework {
         }
 
         private void InjectDepedencyProperties(object instance) {
+#if NET451
             PropertyInfo[] properties = objectType.GetProperties(BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+#elif DOTNET5_4
+            PropertyInfo[] properties = objectType.GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+#endif
                 .Where(p => p.GetCustomAttributes(false).Any(s => s.GetType() == typeof(DepedencyAtrribute)))
                 .ToArray();
             foreach (PropertyInfo p in properties) {
+#if NET451
                 DepedencyAtrribute attr = (DepedencyAtrribute)p.GetCustomAttributes(typeof(DepedencyAtrribute), false)[0];
+#elif DOTNET5_4
+                DepedencyAtrribute attr = p.GetCustomAttributes<DepedencyAtrribute>().First();
+#endif
                 var v = this.GetService(attr.ServiceType, attr.ServiceName, attr.ServiceVersion);
                 if (v == null) {
                     throw new KeyNotFoundException(
@@ -180,7 +196,11 @@ namespace Alioth.Framework {
             if (this.Properties.Count > 0) {
                 Type t = instance.GetType();
                 foreach (var item in this.Properties) {
+#if NET451
                     PropertyInfo pi = t.GetProperty(item.Key, BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+#elif DOTNET5_4
+                    PropertyInfo pi = t.GetProperty(item.Key, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+#endif
                     if (pi == null) {
                         throw new KeyNotFoundException(String.Format("Invalid [Properites] Configuration: could not found a property with the specified name '{0}'. Type: {1}", item.Key, ObjectType.AssemblyQualifiedName));
                     }
@@ -191,6 +211,7 @@ namespace Alioth.Framework {
 
         private static Object ParseValue(Type type, string rawString) {
             Object value = null;
+#if NET451
             switch (Type.GetTypeCode(type)) {
                 case TypeCode.Boolean:
                     value = Boolean.Parse(rawString);
@@ -235,6 +256,37 @@ namespace Alioth.Framework {
                     value = rawString;
                     break;
             }
+#elif DOTNET5_4
+            if (typeof(Boolean).Equals(type)) {
+                value = Boolean.Parse(rawString);
+            } else if (typeof(Byte).Equals(type)) {
+                value = Byte.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(Char).Equals(type)) {
+                value = Char.Parse(rawString);
+            } else if (typeof(DateTime).Equals(type)) {
+                value = DateTime.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(Decimal).Equals(type)) {
+                value = Decimal.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(Double).Equals(type)) {
+                value = Double.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(Int16).Equals(type)) {
+                value = Int16.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(Int32).Equals(type)) {
+                value = Int32.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(Int64).Equals(type)) {
+                value = Int64.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(UInt16).Equals(type)) {
+                value = UInt16.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(UInt32).Equals(type)) {
+                value = UInt32.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(UInt64).Equals(type)) {
+                value = UInt64.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(Single).Equals(type)) {
+                value = Single.Parse(rawString, CultureInfo.InvariantCulture);
+            } else if (typeof(String).Equals(type)) {
+                value = rawString;
+            }
+#endif
             return value;
         }
     }
