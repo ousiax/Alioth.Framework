@@ -4,7 +4,7 @@
   "authors": [ "Roy" ],
   "tags": [ "IoC", "DI", "Inversion of Control", "Dependency Injection"],
   "projectUrl": "https://github.com/qqbuby/alioth.framework",
-  "licenseUrl": "https://opensource.org/licenses/MIT",
+  "licenseUrl": "https://github.com/qqbuby/alioth.framework/blob/master/LICENSE",
   "title": "Alioth.Framework.Config",
   "copyright": "Copyright (c) 2016 Roy Xu",
   "frameworks": {
