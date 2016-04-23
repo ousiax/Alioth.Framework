@@ -1,12 +1,12 @@
 ﻿{
-  "version": "1.0.9-*",
+  "version": "0.0.9-beta-10",
   "description": "A lightweight IoC container that implemented with .NET",
   "authors": [ "Roy" ],
-  "tags": [ "" ],
+  "tags": [ "IoC", "DI", "Inversion of Control", "Dependency Injection"],
   "projectUrl": "https://github.com/qqbuby/alioth.framework ",
-  "licenseUrl": "",
+  "licenseUrl": "https://opensource.org/licenses/MIT",
   "title": "Alioth.Framework",
-  "copyright": "Copyright (c) 2015 Roy Xu",
+  "copyright": "Copyright (c) 2016 Roy Xu",
 
   "frameworks": {
     "net451": { },
