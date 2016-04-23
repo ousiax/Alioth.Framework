@@ -3,8 +3,10 @@
   "description": "A lightweight IoC container that implemented with .NET",
   "authors": [ "Roy" ],
   "tags": [ "" ],
-  "projectUrl": "",
+  "projectUrl": "https://github.com/qqbuby/alioth.framework",
   "licenseUrl": "",
+  "title": "Alioth.Framework.Config",
+  "copyright": "Copyright (c) 2015 Roy Xu",
   "frameworks": {
     "net451": { },
     "dotnet5.4": {
