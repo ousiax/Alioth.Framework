@@ -8,7 +8,7 @@
 using System;
 using Alioth.Framework;
 
-namespace Demo1 {
+namespace ConsoleApp1 {
     class Program {
         static void Main(string[] args) {
             IAliothServiceContainer container = new AliothServiceContainer(null) {

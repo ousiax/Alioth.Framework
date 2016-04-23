@@ -7,7 +7,7 @@
 
 using Alioth.Framework;
 
-namespace Demo1 {
+namespace ConsoleApp1 {
     [ServiceTypeAtrribute(typeof(IXYService))]
     class XYService : IXYService {
         private int x;

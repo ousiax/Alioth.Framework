@@ -5,7 +5,7 @@
  *
 */
 
-namespace Demo1 {
+namespace ConsoleApp1 {
     interface ISubService {
         int Sub(int x, int y);
     }

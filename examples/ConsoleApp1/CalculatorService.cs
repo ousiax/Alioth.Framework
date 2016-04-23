@@ -7,7 +7,7 @@
 
 using Alioth.Framework;
 
-namespace Demo1 {
+namespace ConsoleApp1 {
     [ServiceTypeAtrribute(typeof(ICalculatorService), ReferenceType.Singleton)]
     class CalculatorService : ICalculatorService {
         private IAddService add;
