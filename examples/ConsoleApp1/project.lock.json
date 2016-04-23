@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "Alioth.Framework/1.0.9": {
+      "Alioth.Framework/0.0.9-beta-10": {
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -18,10 +18,10 @@
           "lib/net451/Alioth.Framework.dll": {}
         }
       },
-      "Alioth.Framework.Config/1.0.9": {
+      "Alioth.Framework.Config/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
-          "Alioth.Framework": "1.0.9",
+          "Alioth.Framework": "0.0.9-beta-10",
           "Newtonsoft.Json": "8.0.3"
         },
         "frameworkAssemblies": [
@@ -48,7 +48,7 @@
       }
     },
     "DNXCore,Version=v5.0": {
-      "Alioth.Framework/1.0.9": {
+      "Alioth.Framework/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -66,10 +66,10 @@
           "lib/dotnet5.4/Alioth.Framework.dll": {}
         }
       },
-      "Alioth.Framework.Config/1.0.9": {
+      "Alioth.Framework.Config/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
-          "Alioth.Framework": "1.0.9",
+          "Alioth.Framework": "0.0.9-beta-10",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Newtonsoft.Json": "8.0.3",
           "System.Collections": "4.0.11-beta-23516",
@@ -458,7 +458,7 @@
       }
     },
     "DNX,Version=v4.5.1/debian.8-x86": {
-      "Alioth.Framework/1.0.9": {
+      "Alioth.Framework/0.0.9-beta-10": {
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -473,10 +473,10 @@
           "lib/net451/Alioth.Framework.dll": {}
         }
       },
-      "Alioth.Framework.Config/1.0.9": {
+      "Alioth.Framework.Config/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
-          "Alioth.Framework": "1.0.9",
+          "Alioth.Framework": "0.0.9-beta-10",
           "Newtonsoft.Json": "8.0.3"
         },
         "frameworkAssemblies": [
@@ -503,7 +503,7 @@
       }
     },
     "DNX,Version=v4.5.1/debian.8-x64": {
-      "Alioth.Framework/1.0.9": {
+      "Alioth.Framework/0.0.9-beta-10": {
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -518,10 +518,10 @@
           "lib/net451/Alioth.Framework.dll": {}
         }
       },
-      "Alioth.Framework.Config/1.0.9": {
+      "Alioth.Framework.Config/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
-          "Alioth.Framework": "1.0.9",
+          "Alioth.Framework": "0.0.9-beta-10",
           "Newtonsoft.Json": "8.0.3"
         },
         "frameworkAssemblies": [
@@ -548,7 +548,7 @@
       }
     },
     "DNXCore,Version=v5.0/debian.8-x86": {
-      "Alioth.Framework/1.0.9": {
+      "Alioth.Framework/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -566,10 +566,10 @@
           "lib/dotnet5.4/Alioth.Framework.dll": {}
         }
       },
-      "Alioth.Framework.Config/1.0.9": {
+      "Alioth.Framework.Config/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
-          "Alioth.Framework": "1.0.9",
+          "Alioth.Framework": "0.0.9-beta-10",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Newtonsoft.Json": "8.0.3",
           "System.Collections": "4.0.11-beta-23516",
@@ -958,7 +958,7 @@
       }
     },
     "DNXCore,Version=v5.0/debian.8-x64": {
-      "Alioth.Framework/1.0.9": {
+      "Alioth.Framework/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -976,10 +976,10 @@
           "lib/dotnet5.4/Alioth.Framework.dll": {}
         }
       },
-      "Alioth.Framework.Config/1.0.9": {
+      "Alioth.Framework.Config/0.0.9-beta-10": {
         "type": "package",
         "dependencies": {
-          "Alioth.Framework": "1.0.9",
+          "Alioth.Framework": "0.0.9-beta-10",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Newtonsoft.Json": "8.0.3",
           "System.Collections": "4.0.11-beta-23516",
@@ -1369,12 +1369,12 @@
     }
   },
   "libraries": {
-    "Alioth.Framework/1.0.9": {
+    "Alioth.Framework/0.0.9-beta-10": {
       "type": "package",
-      "sha512": "P9yAvdwWTKEYT0GJvNpnmQWEkzPslCjcvyrj6O6dOa4Mcqvz03gHmokIX+mItU6b2Jr6YDl2/x1av+OCOPmnBQ==",
+      "sha512": "pVwg7EF9Xml29Ui9LkcpDLo6JUV62hKERL/Na0d884o/bREqs+IpN+np9ZZYPVnEEqDa9duUWONS7NOfPrLqRw==",
       "files": [
-        "Alioth.Framework.1.0.9.nupkg",
-        "Alioth.Framework.1.0.9.nupkg.sha512",
+        "Alioth.Framework.0.0.9-beta-10.nupkg",
+        "Alioth.Framework.0.0.9-beta-10.nupkg.sha512",
         "Alioth.Framework.nuspec",
         "lib/dotnet5.4/Alioth.Framework.dll",
         "lib/dotnet5.4/Alioth.Framework.xml",
@@ -1382,12 +1382,12 @@
         "lib/net451/Alioth.Framework.xml"
       ]
     },
-    "Alioth.Framework.Config/1.0.9": {
+    "Alioth.Framework.Config/0.0.9-beta-10": {
       "type": "package",
-      "sha512": "+4ALwg2x5TM6I/onbdOPZN/HBXtgtri42UUakYQVx6UeBm9P/waNX79Vbygg/kT4i/e/fIffrmdaaqU79KfH8w==",
+      "sha512": "xUh6r3VagJvJerjIHq4VlqhBkdJpjpVlmVA1FaMzv5RYY8tE4Xj32PXiT6Wo+OmnBHX3ruTEXCl7MFR7inqxaw==",
       "files": [
-        "Alioth.Framework.Config.1.0.9.nupkg",
-        "Alioth.Framework.Config.1.0.9.nupkg.sha512",
+        "Alioth.Framework.Config.0.0.9-beta-10.nupkg",
+        "Alioth.Framework.Config.0.0.9-beta-10.nupkg.sha512",
         "Alioth.Framework.Config.nuspec",
         "lib/dotnet5.4/Alioth.Framework.Config.dll",
         "lib/dotnet5.4/Alioth.Framework.Config.xml",
