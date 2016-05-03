@@ -1,25 +1,13 @@
 ﻿{
   "version": "0.0.9-beta-10",
-  "description": "Tests Console Application",
+  "description": "Alioth.Framework.Tests",
   "authors": [ "Roy" ],
   "tags": [ "IoC", "DI", "Inversion of Control", "Dependency Injection"],
   "projectUrl": "https://github.com/qqbuby/alioth.framework ",
   "licenseUrl": "https://opensource.org/licenses/MIT",
   "copyright": "Copyright (c) 2016 Roy Xu",
-
-  "compilationOptions": {
-    "emitEntryPoint": true
-  },
-
-  "dependencies": {
-    "Alioth.Framework": "0.0.9-beta-10",
-    "Alioth.Framework.Config": "0.0.9-beta-10",
-    "nunit": "3.0.0",
-    "NUnitLite": "3.0.0-*"
-  },
-
   "commands": {
-    "test": "Tests"
+    "test": "xunit.runner.dnx"
   },
 
   "frameworks": {
@@ -28,11 +16,17 @@
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-beta-23516",
         "System.Collections": "4.0.11-beta-23516",
-        "System.Console": "4.0.0-beta-23516",
         "System.Linq": "4.0.1-beta-23516",
+        "System.Runtime": "4.0.21-beta-23516",
         "System.Threading": "4.0.11-beta-23516"
       }
     }
   },
-  "resource": "servicecontainer.json"
+  "dependencies": {
+    "Alioth.Framework": "0.0.9-beta-10",
+    "Alioth.Framework.Config": "0.0.9-beta-10",
+    "xunit": "2.1.0",
+    "xunit.runner.dnx": "2.1.0-rc1-build204"
+  },
+  "resource": [ "servicecontainer.json" ]
 }

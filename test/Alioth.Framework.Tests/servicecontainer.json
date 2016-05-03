@@ -1,0 +1,79 @@
+﻿{
+  "Services": [
+    {
+      "Type": "Alioth.Framework.Tests.AdditionService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Alioth.Framework.Tests.SubtractionService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Alioth.Framework.Tests.CalculatorService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "",
+      "Version": "",
+      "Description": "",
+      "Properties": {
+        "X": "100",
+        "Y": "200"
+      }
+    },
+    {
+      "Type": "Alioth.Framework.Tests.CalculatorService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "PropertyKeyNotFound",
+      "Version": "",
+      "Description": "",
+      "Properties": {
+        "X": "100",
+        "Y": "200",
+        "Z": "200"
+      }
+    },
+    {
+      "Type": "Alioth.Framework.Tests.MultiCtorsService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "MultiCtors",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Alioth.Framework.Tests.MultiDepedencyCtorsService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "MultiDepedencyCtors",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Alioth.Framework.Tests.MessageService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "",
+      "Version": "",
+      "Description": "",
+      "Parameters": {
+        "message": "foobar"
+      }
+    },
+    {
+      "Type": "Alioth.Framework.Tests.MessageService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "foobar",
+      "Version": "foobar",
+      "Description": "",
+      "Parameters": {
+        "message": "foobar"
+      }
+    },
+    {
+      "Type": "Alioth.Framework.Tests.KeyNotFoundExceptionCalculatorService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "KeyNotFoundException",
+      "Version": "",
+      "Description": ""
+    },
+    {
+      "Type": "Alioth.Framework.Tests.ParameterInjectionCalculatorService, Alioth.Framework.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "ParameterInjection",
+      "Version": "",
+      "Description": ""
+    }
+  ]
+}
