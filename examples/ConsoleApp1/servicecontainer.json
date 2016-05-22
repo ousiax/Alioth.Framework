@@ -1,34 +1,34 @@
 ﻿{
-  "Services": [
-    {
-      "Type": "ConsoleApp1.AddService, ConsoleApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Name": "",
-      "Version": "",
-      "Description": ""
-    },
-    {
-      "Type": "ConsoleApp1.SubService, ConsoleApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Name": "",
-      "Version": "",
-      "Description": ""
-    },
-    {
-      "Type": "ConsoleApp1.CalculatorService, ConsoleApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Name": "",
-      "Version": "",
-      "Description": ""
-    },
-    {
-      "Type": "ConsoleApp1.XYService, ConsoleApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Name": "",
-      "Version": "",
-      "Description": "",
-      "Properties": {
-        "X": "3"
-      },
-      "Parameters": {
-        "y": "4"
-      }
-    }
-  ]
+    "Services": [
+        {
+            "Type": "ConsoleApp1.AddService, ConsoleApp1",
+            "Name": "",
+            "Version": "",
+            "Description": ""
+        },
+        {
+            "Type": "ConsoleApp1.SubService, ConsoleApp1",
+            "Name": "",
+            "Version": "",
+            "Description": ""
+        },
+        {
+            "Type": "ConsoleApp1.CalculatorService, ConsoleApp1",
+            "Name": "",
+            "Version": "",
+            "Description": ""
+        },
+        {
+            "Type": "ConsoleApp1.XYService, ConsoleApp1",
+            "Name": "",
+            "Version": "",
+            "Description": "",
+            "Properties": {
+                "X": "3"
+            },
+            "Parameters": {
+                "y": "4"
+            }
+        }
+    ]
 }
