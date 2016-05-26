@@ -7,12 +7,14 @@
 
 using System;
 
-namespace Alioth.Framework {
+namespace Alioth.Framework
+{
     /// <summary>
     /// Specifies the type of the service object class.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
-    public class ServiceTypeAtrribute : Attribute {
+    public class ServiceTypeAtrribute : Attribute
+    {
         private Type serviceType;
         private ReferenceType referenceType;
 
@@ -33,7 +35,8 @@ namespace Alioth.Framework {
         /// </summary>
         /// <param name="serviceType">the service type.</param>
         /// <param name="referenceType">the service reference type.</param>
-        public ServiceTypeAtrribute(Type serviceType, ReferenceType referenceType = ReferenceType.Strong) {
+        public ServiceTypeAtrribute(Type serviceType, ReferenceType referenceType = ReferenceType.Strong)
+        {
             this.serviceType = serviceType;
             this.referenceType = referenceType;
         }

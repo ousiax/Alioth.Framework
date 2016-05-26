@@ -8,10 +8,14 @@
 using System;
 using Alioth.Framework;
 
-namespace ConsoleApp1 {
-    class Program {
-        static void Main(string[] args) {
-            IAliothServiceContainer container = new AliothServiceContainer(null) {
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            IAliothServiceContainer container = new AliothServiceContainer(null)
+            {
                 Description = "demo1"
             }.Apply("servicecontainer.json");
             ICalculatorService calc = container.GetService<ICalculatorService>();

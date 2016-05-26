@@ -6,11 +6,13 @@
 */
 
 
-namespace Alioth.Framework {
+namespace Alioth.Framework
+{
     /// <summary>
     /// Defines a mechanism for connecting IoC cotnainer with the interface injection of IoC.
     /// </summary>
-    public interface IAliothServiceContainerConnector {
+    public interface IAliothServiceContainerConnector
+    {
         /// <summary>
         /// Connect a IoC container when service object are built with <c>Alioth.Framework.IObjectBuilder</c>.
         /// </summary>

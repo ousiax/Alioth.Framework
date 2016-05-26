@@ -7,26 +7,32 @@
 
 using Alioth.Framework;
 
-namespace ConsoleApp1 {
+namespace ConsoleApp1
+{
     [ServiceTypeAtrribute(typeof(IXYService))]
-    class XYService : IXYService {
+    class XYService : IXYService
+    {
         private int x;
         private int y;
 
-        public int X {
+        public int X
+        {
             get { return x; }
             set { x = value; }
         }
 
-        public int Y {
+        public int Y
+        {
             get { return y; }
         }
 
-        public XYService() {
+        public XYService()
+        {
         }
 
         [DepedencyAtrribute]
-        public XYService(int y) {
+        public XYService(int y)
+        {
             this.y = y;
         }
     }

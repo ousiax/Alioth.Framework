@@ -8,11 +8,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace Alioth.Framework {
+namespace Alioth.Framework
+{
     /// <summary>
     /// Represents a IoC container.
     /// </summary>
-    public interface IAliothServiceContainer : IAliothServiceProvider {
+    public interface IAliothServiceContainer : IAliothServiceProvider
+    {
         /// <summary>
         /// Gets or sets the description of the IoC container.
         /// </summary>

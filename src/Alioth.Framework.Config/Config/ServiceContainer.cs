@@ -5,23 +5,22 @@
  *
 */
 
-using System;
 using System.Collections.Generic;
 
-namespace Alioth.Framework.Config {
+namespace Alioth.Framework.Config
+{
     /// <summary>
     /// Represents a service container that contains serivce metadata configuration.
     /// </summary>
-#if NET451
-    [Serializable]
-#endif
-    public class ServiceContainer {
+    public class ServiceContainer
+    {
         private List<Service> services;
 
         /// <summary>
         /// Gets or sets the service metadata list.
         /// </summary>
-        public List<Service> Services {
+        public List<Service> Services
+        {
             get { return services; }
             set { services = value; }
         }
@@ -29,7 +28,8 @@ namespace Alioth.Framework.Config {
         /// <summary>
         /// Initializes a new instance of the class <c>Alioth.Framework.Config.ServiceContainer</c>.
         /// </summary>
-        public ServiceContainer() {
+        public ServiceContainer()
+        {
             this.services = new List<Service>();
         }
     }

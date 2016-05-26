@@ -8,11 +8,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace Alioth.Framework {
+namespace Alioth.Framework
+{
     /// <summary>
     /// Defines a mechanism for building service object.
     /// </summary>
-    internal interface IObjectBuilder : IAliothServiceContainerConnector {
+    internal interface IObjectBuilder : IAliothServiceContainerConnector
+    {
         /// <summary>
         /// Gets or sets the service object class type.
         /// </summary>

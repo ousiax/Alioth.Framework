@@ -8,14 +8,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace Alioth.Framework.Config {
+namespace Alioth.Framework.Config
+{
     /// <summary>
     /// Represents a service object metadata configuration.
     /// </summary>
-#if NET451
-    [Serializable]
-#endif
-    public class Service {
+    public class Service
+    {
         private String type;
         private String name;
         private String version;
@@ -26,7 +25,8 @@ namespace Alioth.Framework.Config {
         /// <summary>
         /// Gets or set the type of the serivce object class.
         /// </summary>
-        public String Type {
+        public String Type
+        {
             get { return type; }
             set { type = value; }
         }
@@ -34,7 +34,8 @@ namespace Alioth.Framework.Config {
         /// <summary>
         /// Gets or sets the name of the serivce type.
         /// </summary>
-        public String Name {
+        public String Name
+        {
             get { return name; }
             set { name = value; }
         }
@@ -42,7 +43,8 @@ namespace Alioth.Framework.Config {
         /// <summary>
         /// Gets or sets the version of the serivce type.
         /// </summary>
-        public String Version {
+        public String Version
+        {
             get { return version; }
             set { version = value; }
         }
@@ -50,7 +52,8 @@ namespace Alioth.Framework.Config {
         /// <summary>
         /// Gets or sets the description information of the serivce type.
         /// </summary>
-        public String Description {
+        public String Description
+        {
             get { return description; }
             set { description = value; }
         }
@@ -58,7 +61,8 @@ namespace Alioth.Framework.Config {
         /// <summary>
         /// Gets or sets the parameters dictionary of the serivce type.
         /// </summary>
-        public IDictionary<String, String> Parameters {
+        public IDictionary<String, String> Parameters
+        {
             get { return parameters; }
             set { parameters = value; }
         }
@@ -66,7 +70,8 @@ namespace Alioth.Framework.Config {
         /// <summary>
         /// Gets or sets the properties dictionary of the serivce type.
         /// </summary>
-        public IDictionary<String, String> Properties {
+        public IDictionary<String, String> Properties
+        {
             get { return properties; }
             set { properties = value; }
         }
@@ -74,7 +79,8 @@ namespace Alioth.Framework.Config {
         /// <summary>
         ///  Initializes a new instance of the class <c>Alioth.Framework.Config.Service</c>.
         /// </summary>
-        public Service() {
+        public Service()
+        {
             this.parameters = new Dictionary<String, String>();
             this.properties = new Dictionary<String, String>();
         }

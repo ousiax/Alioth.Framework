@@ -6,8 +6,10 @@
 */
 
 
-namespace ConsoleApp1 {
-    interface IAddService {
+namespace ConsoleApp1
+{
+    interface IAddService
+    {
         int Add(int x, int y);
     }
 }

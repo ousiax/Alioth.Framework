@@ -7,7 +7,8 @@
 
 using System;
 
-namespace Alioth.Framework {
+namespace Alioth.Framework
+{
     /// <summary>
     /// Specifies the dependent properties, constructors, and parameters that planted in a service object constructor.
     /// </summary>
@@ -18,7 +19,8 @@ namespace Alioth.Framework {
     [AttributeUsage(AttributeTargets.Property
         | AttributeTargets.Constructor
         | AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]
-    public class DepedencyAtrribute : Attribute {
+    public class DepedencyAtrribute : Attribute
+    {
         private Type serviceType;
         private String serviceName;
         private String serviceVersion;
@@ -27,7 +29,8 @@ namespace Alioth.Framework {
         /// Gets or sets the service type.
         /// <see seealso="Alioth.Framework.ServiceKey.Type"/>
         /// </summary>
-        public Type ServiceType {
+        public Type ServiceType
+        {
             get { return serviceType; }
             set { serviceType = value; }
         }
@@ -36,7 +39,8 @@ namespace Alioth.Framework {
         /// Gets or sets the service name.
         /// <seealso cref="Alioth.Framework.ServiceKey.Name"/>
         /// </summary>
-        public String ServiceName {
+        public String ServiceName
+        {
             get { return serviceName; }
             set { serviceName = value; }
         }
@@ -45,7 +49,8 @@ namespace Alioth.Framework {
         /// Gets or sets the service version.
         /// <seealso cref="Alioth.Framework.ServiceKey.Version"/>
         /// </summary>
-        public String ServiceVersion {
+        public String ServiceVersion
+        {
             get { return serviceVersion; }
             set { serviceVersion = value; }
         }
@@ -53,16 +58,19 @@ namespace Alioth.Framework {
         /// <summary>
         /// Initialize a new instance of class <c>Alioth.Framework.DepedencyAtrribute</c>.
         /// </summary>
-        public DepedencyAtrribute() {
+        public DepedencyAtrribute()
+        {
         }
 
         /// <summary>
         /// Initialize a new instance of class <c>Alioth.Framework.DepedencyAtrribute</c> with a specified <paramref name="serviceType"/>.
         /// </summary>
         /// <param name="serviceType"><see cref="Alioth.Framework.ServiceKey.Type"/></param>
-        public DepedencyAtrribute(Type serviceType) {
+        public DepedencyAtrribute(Type serviceType)
+        {
             #region precondition
-            if (serviceType == null) {
+            if (serviceType == null)
+            {
                 throw new ArgumentNullException("serviceType");
             }
             #endregion

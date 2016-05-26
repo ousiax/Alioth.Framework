@@ -7,11 +7,13 @@
 
 using System;
 
-namespace Alioth.Framework {
+namespace Alioth.Framework
+{
     /// <summary>
     /// Defines a mechanism for retrieving a service object.
     /// </summary>
-    public interface IAliothServiceProvider : IServiceProvider {
+    public interface IAliothServiceProvider : IServiceProvider
+    {
         /// <summary>
         /// Gets the service object of the specified type.
         /// </summary>

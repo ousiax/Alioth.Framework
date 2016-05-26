@@ -11,11 +11,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Alioth.Framework {
+namespace Alioth.Framework
+{
     /// <summary>
     /// Represents a IoC container.
     /// </summary>
-    public sealed class AliothServiceContainer : IAliothServiceContainer {
+    public sealed class AliothServiceContainer : IAliothServiceContainer
+    {
         private IAliothServiceContainer parent;
         private ConcurrentDictionary<ServiceKey, IObjectBuilder> builderContainer;
 
@@ -33,7 +35,8 @@ namespace Alioth.Framework {
         /// Initializes a new instance of the class <c>Alioth.Framework.AliothServiceContainer</c> with a specified parent IoC container <paramref name="parent"/>.
         /// </summary>
         /// <param name="parent">The parent IoC cotnainer of the new IoC container.</param>
-        public AliothServiceContainer(IAliothServiceContainer parent = null) {
+        public AliothServiceContainer(IAliothServiceContainer parent = null)
+        {
             this.builderContainer = new ConcurrentDictionary<ServiceKey, IObjectBuilder>();
             this.parent = parent;
         }
@@ -47,19 +50,31 @@ namespace Alioth.Framework {
         /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
         /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
         /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
-        public IAliothServiceContainer Apply(Type objectType, IDictionary<String, String> parameters, IDictionary<String, String> properties, string name, string version) {
+        public IAliothServiceContainer Apply(Type objectType, IDictionary<String, String> parameters, IDictionary<String, String> properties, string name, string version)
+        {
             #region precondition
             if (objectType == null) { throw new ArgumentNullException("objectType"); }
-            if (!objectType.GetTypeInfo().IsClass) {
+#if NET40
+            if (!objectType.IsClass)
+#else
+            if (!objectType.GetTypeInfo().IsClass)
+#endif
+            {
                 throw new ArgumentOutOfRangeException("objectType", "The specified object type should be a concrete class.");
             }
             #endregion
+#if NET40
+            ServiceTypeAtrribute[] attributes = objectType.GetCustomAttributes(typeof(ServiceTypeAtrribute), false).Select(o => (ServiceTypeAtrribute)o).ToArray();
+#else
             ServiceTypeAtrribute[] attributes = objectType.GetTypeInfo().GetCustomAttributes<ServiceTypeAtrribute>(false).ToArray();
-            if (attributes.Length == 0) {
+#endif
+            if (attributes.Length == 0)
+            {
                 throw new ArgumentException(String.Format("{0} should be to anotate with {1}", objectType.Name, attributes));
             }
             IObjectBuilder builder = GetBuilder(objectType, parameters, properties, attributes);
-            foreach (ServiceTypeAtrribute attribute in attributes) {
+            foreach (ServiceTypeAtrribute attribute in attributes)
+            {
                 ServiceKey key = ServiceKey.Create(attribute.ServiceType, name, version);
                 AddBuilder(key, builder);
             }
@@ -75,7 +90,8 @@ namespace Alioth.Framework {
         /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
         /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
         /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
-        public IAliothServiceContainer Apply<T, O>(O instance, string name, string version) where O : T {
+        public IAliothServiceContainer Apply<T, O>(O instance, string name, string version) where O : T
+        {
             var key = new ServiceKey(typeof(T), name, version);
             var builder = SingletonBuilder.Create(instance); //TODO create object build with IoC container.
             AddBuilder(key, builder);
@@ -87,7 +103,8 @@ namespace Alioth.Framework {
         /// </summary>
         /// <param name="description">A <c>System.String</c> that represents the description of the child IoC container.</param>
         /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
-        public IAliothServiceContainer CreateChild(string description = null) {
+        public IAliothServiceContainer CreateChild(string description = null)
+        {
             return new AliothServiceContainer(this) { Description = description };
         }
 
@@ -96,14 +113,18 @@ namespace Alioth.Framework {
         /// </summary>
         /// <param name="serviceType">An <c>System.Type</c> that specifies the type of service object to get.</param>
         /// <returns>A service object of type serviceType.-or- null if there is no service object of type serviceType.</returns>
-        public object GetService(Type serviceType) {
+        public object GetService(Type serviceType)
+        {
             Object obj = null;
 
             var key = ServiceKey.Create(serviceType);
             IObjectBuilder builder;
-            if (builderContainer.TryGetValue(key, out builder)) {
+            if (builderContainer.TryGetValue(key, out builder))
+            {
                 obj = builder.Build();
-            } else if (parent != null) {
+            }
+            else if (parent != null)
+            {
                 obj = parent.GetService(serviceType);
             }
             return obj;
@@ -116,36 +137,48 @@ namespace Alioth.Framework {
         /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
         /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
         /// <returns>A service object of type serviceType.-or- null if there is no service object of type serviceType.</returns>
-        public object GetService(Type serviceType, string name, string version) {
+        public object GetService(Type serviceType, string name, string version)
+        {
             Object obj = null;
 
             var key = ServiceKey.Create(serviceType, name, version);
             IObjectBuilder builder;
-            if (builderContainer.TryGetValue(key, out builder)) {
+            if (builderContainer.TryGetValue(key, out builder))
+            {
                 obj = builder.Build();
-            } else if (parent != null) {
+            }
+            else if (parent != null)
+            {
                 obj = parent.GetService(serviceType);
             }
             return obj;
         }
 
-        private IObjectBuilder GetBuilder(Type objectType, IDictionary<String, String> parameters, IDictionary<String, String> properties, ServiceTypeAtrribute[] attributes) {
+        private IObjectBuilder GetBuilder(Type objectType, IDictionary<String, String> parameters, IDictionary<String, String> properties, ServiceTypeAtrribute[] attributes)
+        {
             IObjectBuilder builder;
 
             Boolean isSingleton = attributes.Any(o => o.ReferenceType == ReferenceType.Singleton);
-            if (isSingleton) {
+            if (isSingleton)
+            {
                 builder = new SingletonBuilder(); //TODO create object build with IoC container.
-            } else {
+            }
+            else
+            {
                 builder = new ObjectBuilder(); //TODO create object build with IoC container.
             }
             builder.ObjectType = objectType;
-            if (parameters != null) {
-                foreach (var param in parameters) {
+            if (parameters != null)
+            {
+                foreach (var param in parameters)
+                {
                     builder.Parameters.Add(param.Key, param.Value);
                 }
             }
-            if (properties != null) {
-                foreach (var prop in properties) {
+            if (properties != null)
+            {
+                foreach (var prop in properties)
+                {
                     builder.Properties.Add(prop.Key, prop.Value);
                 }
             }
@@ -153,8 +186,10 @@ namespace Alioth.Framework {
             return builder;
         }
 
-        private void AddBuilder(ServiceKey key, IObjectBuilder builder) {
-            if (!builderContainer.TryAdd(key, builder)) {
+        private void AddBuilder(ServiceKey key, IObjectBuilder builder)
+        {
+            if (!builderContainer.TryAdd(key, builder))
+            {
                 throw new ArgumentException(String.Format("An element with the same key:\"{0}\", already exists in the AliothServiceContainer:\"{1}\"", key, Description));
             }
         }

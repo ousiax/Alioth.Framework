@@ -1,5 +1,5 @@
 ﻿{
-    "version": "0.1.10-beta1",
+    "version": "1.0.0-*",
     "description": "Console Application",
     "authors": [
         "Roy"
@@ -23,19 +23,19 @@
             ]
         }
     },
-    "dependencies": {
-        "Microsoft.NETCore.App": {
-            "type": "platform",
-            "version": "1.0.0-rc2-3002702"
-        },
-        "Alioth.Framework.Config": "0.1.10-beta1"
-    },
     "frameworks": {
         "netcoreapp1.0": {
             "imports": [
                 "dnxcore50",
                 "portable-net451+win8"
-            ]
+            ],
+            "dependencies": {
+                "Microsoft.NETCore.App": {
+                    "type": "platform",
+                    "version": "1.0.0-rc2-3002702"
+                },
+                "Alioth.Framework.Config": "0.1.10-beta10"
+            }
         }
     }
 }

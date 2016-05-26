@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.1.10-beta1",
+  "version": "0.1.10-beta10",
   "description": "A lightweight IoC container that implemented with .NET",
   "authors": [
     "Roy"
@@ -16,13 +16,40 @@
     "projectUrl": "https://github.com/qqbuby/alioth.framework",
     "licenseUrl": "https://github.com/qqbuby/alioth.framework/blob/master/LICENSE"
   },
+  "dependencies": {
+    "Alioth.Framework": {
+      "version": "0.1.10-beta10",
+      "target": "project"
+    }
+  },
   "frameworks": {
+    "net40": {
+      "dependencies": {
+        "Newtonsoft.Json": "8.0.3"
+      }
+    },
+    "net451": {
+      "dependencies": {
+        "Newtonsoft.Json": "8.0.3"
+      }
+    },
+    "netstandard1.3": {
+      "dependencies": {
+        "Newtonsoft.Json": "8.0.4-beta1"
+      }
+    },
+    "netstandard1.4": {
+      "dependencies": {
+        "Newtonsoft.Json": "8.0.4-beta1"
+      }
+    },
     "netstandard1.5": {
       "dependencies": {
-        "Alioth.Framework": {
-          "version": "0.1.10-beta1",
-          "target": "project"
-        },
+        "Newtonsoft.Json": "8.0.4-beta1"
+      }
+    },
+    "netstandard1.6": {
+      "dependencies": {
         "Newtonsoft.Json": "8.0.4-beta1"
       }
     }

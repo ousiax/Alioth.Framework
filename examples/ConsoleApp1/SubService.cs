@@ -7,10 +7,13 @@
 
 using Alioth.Framework;
 
-namespace ConsoleApp1 {
+namespace ConsoleApp1
+{
     [ServiceTypeAtrribute(typeof(ISubService), ReferenceType.Singleton)]
-    class SubService : ISubService {
-        public int Sub(int x, int y) {
+    class SubService : ISubService
+    {
+        public int Sub(int x, int y)
+        {
             return x - y;
         }
     }

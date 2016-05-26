@@ -6,7 +6,9 @@
 */
 
 
-namespace ConsoleApp1 {
-    interface ICalculatorService : IAddService, ISubService {
+namespace ConsoleApp1
+{
+    interface ICalculatorService : IAddService, ISubService
+    {
     }
 }

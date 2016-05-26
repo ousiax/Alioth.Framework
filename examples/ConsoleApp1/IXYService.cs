@@ -6,8 +6,10 @@
 */
 
 
-namespace ConsoleApp1 {
-    interface IXYService {
+namespace ConsoleApp1
+{
+    interface IXYService
+    {
         int X { get; }
 
         int Y { get; }

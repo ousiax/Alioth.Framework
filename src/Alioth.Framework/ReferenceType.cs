@@ -5,11 +5,13 @@
  *
 */
 
-namespace Alioth.Framework {
+namespace Alioth.Framework
+{
     /// <summary>
     /// Specifies the life cycle of the service object.
     /// </summary>
-    public enum ReferenceType {
+    public enum ReferenceType
+    {
         /// <summary>
         /// Specifies a singlton life cycle that will be a zero or a sole service object in the currecnt IoC container.
         /// </summary>

@@ -7,10 +7,13 @@
 
 using Alioth.Framework;
 
-namespace ConsoleApp1 {
+namespace ConsoleApp1
+{
     [ServiceTypeAtrribute(typeof(IAddService), ReferenceType.Singleton)]
-    class AddService : IAddService {
-        public int Add(int x, int y) {
+    class AddService : IAddService
+    {
+        public int Add(int x, int y)
+        {
             return x + y;
         }
     }
