@@ -12,7 +12,7 @@
           "lib/net40/Newtonsoft.Json.dll": {}
         }
       },
-      "Alioth.Framework/0.1.10-beta10": {
+      "Alioth.Framework/0.1.10-beta11": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.0",
         "compile": {
@@ -33,7 +33,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Alioth.Framework/0.1.10-beta10": {
+      "Alioth.Framework/0.1.10-beta11": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "compile": {
@@ -936,7 +936,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Alioth.Framework/0.1.10-beta10": {
+      "Alioth.Framework/0.1.10-beta11": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -2050,7 +2050,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Alioth.Framework/0.1.10-beta10": {
+      "Alioth.Framework/0.1.10-beta11": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.4",
         "dependencies": {
@@ -3187,7 +3187,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Alioth.Framework/0.1.10-beta10": {
+      "Alioth.Framework/0.1.10-beta11": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.5",
         "dependencies": {
@@ -4324,7 +4324,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Alioth.Framework/0.1.10-beta10": {
+      "Alioth.Framework/0.1.10-beta11": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
@@ -7561,7 +7561,7 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Alioth.Framework/0.1.10-beta10": {
+    "Alioth.Framework/0.1.10-beta11": {
       "type": "project",
       "path": "../Alioth.Framework/project.json",
       "msbuildProject": "../Alioth.Framework/Alioth.Framework.xproj"
@@ -7569,7 +7569,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Alioth.Framework >= 0.1.10-beta10"
+      "Alioth.Framework >= 0.1.10-beta11"
     ],
     ".NETFramework,Version=v4.0": [
       "Newtonsoft.Json >= 8.0.3"

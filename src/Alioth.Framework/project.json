@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.1.10-beta10",
+  "version": "0.1.10-beta11",
   "description": "A lightweight IoC container that implemented with .NET",
   "authors": [
     "Roy"
@@ -15,6 +15,9 @@
     ],
     "projectUrl": "https://github.com/qqbuby/alioth.framework ",
     "licenseUrl": "https://github.com/qqbuby/alioth.framework/blob/master/LICENSE"
+  },
+  "buildOptions": {
+    "xmlDoc": true
   },
   "frameworks": {
     "net40": { },

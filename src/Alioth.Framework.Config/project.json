@@ -1,11 +1,14 @@
 ﻿{
-  "version": "0.1.10-beta10",
+  "version": "0.1.10-beta11",
   "description": "A lightweight IoC container that implemented with .NET",
   "authors": [
     "Roy"
   ],
   "title": "Alioth.Framework.Config",
   "copyright": "Copyright (c) 2016 Roy Xu",
+  "buildOptions": {
+    "xmlDoc": true
+  },
   "packOptions": {
     "tags": [
       "IoC",
@@ -18,7 +21,7 @@
   },
   "dependencies": {
     "Alioth.Framework": {
-      "version": "0.1.10-beta10",
+      "version": "0.1.10-beta11",
       "target": "project"
     }
   },

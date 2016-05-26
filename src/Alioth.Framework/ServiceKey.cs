@@ -149,6 +149,7 @@ namespace Alioth.Framework
             return false;
         }
 
+        /// <summary>
         /// Returns the hash code for the current <c>Alioth.Framework.ServiceKey</c> object.
         /// </summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
