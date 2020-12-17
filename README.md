@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/qqbuby/alioth.framework.svg?branch=develop)](https://travis-ci.org/qqbuby/alioth.framework)
+
 # Alioth Framework
 A lightweight IoC container that implemented with .NET.
 
