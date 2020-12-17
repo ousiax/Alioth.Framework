@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Copyright>Copyright (c) 2020 ROY</Copyright>
+    <AssemblyTitle>Alioth.Framework.Tests</AssemblyTitle>
+    <VersionPrefix>1.0.0-alpha1</VersionPrefix>
+    <Authors>ROY</Authors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Alioth.Framework.Tests</AssemblyName>
+    <Description>A lightweight IoC container that implemented with .NET</Description>
+    <IsPackable>false</IsPackable>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/qqbuby/alioth.framework</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="servicecontainer.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Alioth.Framework\Alioth.Framework.csproj" />
+    <ProjectReference Include="..\..\src\Alioth.Framework.Config\Alioth.Framework.Config.csproj" />
+  </ItemGroup>
+
+</Project>

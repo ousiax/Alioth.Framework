@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Copyright>Copyright (c) 2020 ROY</Copyright>
+    <AssemblyTitle>Alioth.Framework</AssemblyTitle>
+    <VersionPrefix>1.0.0-alpha1</VersionPrefix>
+    <Authors>ROY</Authors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Alioth.Framework</AssemblyName>
+    <Description>A lightweight IoC container that implemented with .NET</Description>
+    <PackageId>Alioth.Framework</PackageId>
+    <PackageTags>IoC;DI;Inversion of Control;Dependency Injection</PackageTags>
+    <PackageReleaseNotes>
+      1. Migrate to netstandard2.0
+    </PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/qqbuby/alioth.framework</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/qqbuby/alioth.framework</RepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+</Project>
