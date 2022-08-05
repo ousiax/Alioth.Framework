@@ -14,8 +14,8 @@ namespace Alioth.Framework
     /// </summary>
     internal class SingletonBuilder : ObjectBuilder
     {
-        private Object instance;
-        private Object lockObj = new Object();
+        private object _instance;
+        private readonly object _lockObj = new object();
 
         /// <summary>
         /// Initializes a new instance of the class <c>Alioth.Framework.SingletonBuilder</c>.
@@ -36,13 +36,13 @@ namespace Alioth.Framework
         /// </summary>
         /// <param name="instance">A singleton service object.</param>
         /// <returns><c>Alioth.Framework.SingletonBuilder</c>.</returns>
-        public static SingletonBuilder Create(Object instance)
+        public static SingletonBuilder Create(object instance)
         {
-            #region precondition
-            if (instance == null) { throw new ArgumentNullException("instance"); }
-            #endregion
-            SingletonBuilder builder = new SingletonBuilder(instance.GetType());
-            builder.instance = instance;
+            if (instance == null) { throw new ArgumentNullException(nameof(instance)); }
+            var builder = new SingletonBuilder(instance.GetType())
+            {
+                _instance = instance
+            };
             return builder;
         }
 
@@ -52,17 +52,17 @@ namespace Alioth.Framework
         /// <returns>An object instance of the service object class.</returns>
         public override object Build()
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                lock (lockObj)
+                lock (_lockObj)
                 {
-                    if (instance == null)
+                    if (_instance == null)
                     {
-                        instance = base.Build();
+                        _instance = base.Build();
                     }
                 }
             }
-            return instance;
+            return _instance;
         }
     }
 }

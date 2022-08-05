@@ -9,14 +9,14 @@ using System;
 
 namespace Alioth.Framework.Tests
 {
-    [ServiceTypeAtrribute(typeof(ICalculatorService))]
+    [ServiceTypeAttribute(typeof(ICalculatorService))]
     class KeyNotFoundExceptionCalculatorService : ICalculatorService
     {
-        [DepedencyAtrribute(typeof(IAdditionService), ServiceName = "fooooobar")]
+        [DepedencyAttribute(typeof(IAdditionService), ServiceName = "fooooobar")]
         public IAdditionService Addition { get; set; }
 
 
-        [DepedencyAtrribute(typeof(ISubtractionService))]
+        [DepedencyAttribute(typeof(ISubtractionService))]
         public ISubtractionService Subtraction { get; set; }
 
         public int X

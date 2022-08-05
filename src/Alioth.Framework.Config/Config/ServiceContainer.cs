@@ -14,23 +14,16 @@ namespace Alioth.Framework.Config
     /// </summary>
     public class ServiceContainer
     {
-        private List<Service> services;
-
         /// <summary>
         /// Gets or sets the service metadata list.
         /// </summary>
-        public List<Service> Services
-        {
-            get { return services; }
-            set { services = value; }
-        }
+        public List<Service> Services { get; set; } = new List<Service>();
 
         /// <summary>
         /// Initializes a new instance of the class <c>Alioth.Framework.Config.ServiceContainer</c>.
         /// </summary>
         public ServiceContainer()
         {
-            this.services = new List<Service>();
         }
     }
 }

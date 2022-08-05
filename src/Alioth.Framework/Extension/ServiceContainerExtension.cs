@@ -9,37 +9,87 @@ using System;
 
 namespace Alioth.Framework
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ServiceContainerExtension
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="objectType"></param>
+        /// <returns></returns>
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Type objectType)
         {
             return container.Apply(objectType, null, null, null, null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="objectType"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Type objectType, string name)
         {
             return container.Apply(objectType, null, null, name, null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="objectType"></param>
+        /// <param name="name"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Type objectType, string name, string version)
         {
             return container.Apply(objectType, null, null, name, version);
         }
 
-        public static IAliothServiceContainer Apply<T, O>(this IAliothServiceContainer container, O instance) where O : T
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        /// <typeparam name="TImplementation"></typeparam>
+        /// <param name="container"></param>
+        /// <param name="instance"></param>
+        /// <returns></returns>
+        public static IAliothServiceContainer Apply<TService, TImplementation>(this IAliothServiceContainer container, TImplementation instance) where TImplementation : TService
         {
-            return container.Apply<T, O>(instance, null, null);
+            return container.Apply<TService, TImplementation>(instance, null, null);
         }
 
-        public static IAliothServiceContainer Apply<T, O>(this IAliothServiceContainer container, O instance, String name) where O : T
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        /// <typeparam name="TImplementation"></typeparam>
+        /// <param name="container"></param>
+        /// <param name="instance"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static IAliothServiceContainer Apply<TService, TImplementation>(this IAliothServiceContainer container, TImplementation instance, string name) where TImplementation : TService
         {
-            return container.Apply<T, O>(instance, name, null);
+            return container.Apply<TService, TImplementation>(instance, name, null);
         }
 
-        public static IAliothServiceContainer Apply<T, O>(this IAliothServiceContainer container, O instance, String name, String version) where O : T
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        /// <typeparam name="TImplementation"></typeparam>
+        /// <param name="container"></param>
+        /// <param name="instance"></param>
+        /// <param name="name"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        public static IAliothServiceContainer Apply<TService, TImplementation>(this IAliothServiceContainer container, TImplementation instance, string name, string version) where TImplementation : TService
         {
-            return container.Apply<T, O>(instance, name, version);
+            return container.Apply<TService, TImplementation>(instance, name, version);
         }
     }
 }

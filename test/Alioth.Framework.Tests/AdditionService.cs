@@ -7,7 +7,7 @@
 
 namespace Alioth.Framework.Tests
 {
-    [ServiceTypeAtrribute(typeof(IAdditionService))]
+    [ServiceTypeAttribute(typeof(IAdditionService))]
     class AdditionService : IAdditionService
     {
         public int Add(int x, int y)

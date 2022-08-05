@@ -9,7 +9,7 @@ using System;
 
 namespace Alioth.Framework.Tests
 {
-    [ServiceTypeAtrribute(typeof(IAdditionService))]
+    [ServiceTypeAttribute(typeof(IAdditionService))]
     class MultiCtorsService : IAdditionService
     {
         public MultiCtorsService()

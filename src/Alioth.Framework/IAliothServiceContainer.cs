@@ -18,7 +18,7 @@ namespace Alioth.Framework
         /// <summary>
         /// Gets or sets the description of the IoC container.
         /// </summary>
-        String Description { get; set; }
+        string Description { get; set; }
 
         /// <summary>
         /// Gets the parent IoC cotnainer.
@@ -34,24 +34,24 @@ namespace Alioth.Framework
         /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
         /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
         /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
-        IAliothServiceContainer Apply(Type objectType, IDictionary<String, String> parameters, IDictionary<String, String> properties, String name, String version);
+        IAliothServiceContainer Apply(Type objectType, IDictionary<string, string> parameters, IDictionary<string, string> properties, string name, string version);
 
         /// <summary>
         /// Applys a singleton service object.
         /// </summary>
-        /// <typeparam name="T">The service type of the service object.</typeparam>
-        /// <typeparam name="O">The type of the service object.</typeparam>
+        /// <typeparam name="TService">The service type of the service object.</typeparam>
+        /// <typeparam name="TImplementation">The type of the service object.</typeparam>
         /// <param name="instance">The service object.</param>
         /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
         /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
         /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
-        IAliothServiceContainer Apply<T, O>(O instance, String name, String version) where O : T;
+        IAliothServiceContainer Apply<TService, TImplementation>(TImplementation instance, string name, string version) where TImplementation : TService;
 
         /// <summary>
         /// Creates a child IoC container.
         /// </summary>
         /// <param name="description">A <c>System.String</c> that represents the description of the child IoC container.</param>
         /// <returns>An IoC container that implements <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
-        IAliothServiceContainer CreateChild(String description = null);
+        IAliothServiceContainer CreateChild(string description = null);
     }
 }

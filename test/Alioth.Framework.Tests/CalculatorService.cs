@@ -7,18 +7,18 @@
 
 namespace Alioth.Framework.Tests
 {
-    [ServiceTypeAtrribute(typeof(ICalculatorService))]
+    [ServiceTypeAttribute(typeof(ICalculatorService))]
     class CalculatorService : ICalculatorService
     {
         public int X { get; set; }
 
         public int Y { get; set; }
 
-        [DepedencyAtrribute(typeof(IAdditionService))]
+        [DepedencyAttribute(typeof(IAdditionService))]
         public IAdditionService Addition { get; set; }
 
 
-        [DepedencyAtrribute(typeof(ISubtractionService))]
+        [DepedencyAttribute(typeof(ISubtractionService))]
         public ISubtractionService Subtraction { get; set; }
 
         public int Add(int x, int y)

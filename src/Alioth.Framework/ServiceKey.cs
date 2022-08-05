@@ -6,6 +6,7 @@
 */
 
 using System;
+using System.Globalization;
 
 namespace Alioth.Framework
 {
@@ -14,34 +15,22 @@ namespace Alioth.Framework
     /// </summary>
     internal struct ServiceKey
     {
-        private Type type;
-        private String name;
-        private String version;
-        private int hashCode;
+        private readonly int _hashCode;
 
         /// <summary>
         /// Gets the service type of the <c>Alioth.Framework.ServiceKey</c>.
         /// </summary>
-        public Type Type
-        {
-            get { return type; }
-        }
+        public Type Type { get; }
 
         /// <summary>
         /// Gets the service name of the <c>Alioth.Framework.ServiceKey</c>.
         /// </summary>
-        public String Name
-        {
-            get { return name; }
-        }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the service version of the <c>Alioth.Framework.ServiceKey</c>.
         /// </summary>
-        public String Version
-        {
-            get { return version; }
-        }
+        public string Version { get; }
 
         /// <summary>
         /// Initializes a new instance of the struct <c>Alioth.Framework.ServiceKey</c>.
@@ -49,28 +38,21 @@ namespace Alioth.Framework
         /// <param name="type">A <c>System.Type</c> that specifies the type of service object to get.</param>
         /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
         /// <param name="version">An <c>System.String</c> that specifies the version of service object to get.</param>
-        public ServiceKey(Type type, String name, String version)
+        public ServiceKey(Type type, string name, string version)
         {
-            #region precondition
-            if (type == null)
-            {
-                throw new ArgumentNullException("type");
-            }
-            #endregion
-            this.type = type;
-            this.name = (name ?? String.Empty).ToLower();
-            this.version = (version ?? String.Empty).ToLower();
+            Type = type ?? throw new ArgumentNullException(nameof(type));
+            Name = (name ?? string.Empty).ToLower(CultureInfo.InvariantCulture);
+            Version = (version ?? string.Empty).ToLower(CultureInfo.InvariantCulture);
 
-            this.hashCode = 0;
-            int hashCode = this.type.GetHashCode();
-            if (name != null)
-            {
-                hashCode = 29 * hashCode | name.GetHashCode();
-            }
-            if (version != null)
-            {
-                hashCode = 29 * hashCode | version.GetHashCode();
-            }
+            _hashCode = Type.FullName.GetHashCode();
+            //if (name != null)
+            //{
+            //    _hashCode = (29 * _hashCode) | name.GetHashCode();
+            //}
+            //if (version != null)
+            //{
+            //    _hashCode = (29 * _hashCode) | version.GetHashCode();
+            //}
         }
 
         /// <summary>
@@ -89,7 +71,7 @@ namespace Alioth.Framework
         /// <param name="type">A <c>System.Type</c> that specifies the type of service object to get.</param>
         /// <param name="name">An <c>System.String</c> that specifies the name of service object to get.</param>
         /// <returns>A new instance of the struct <c>Alioth.Framework.ServiceKey</c>.</returns>
-        public static ServiceKey Create(Type type, String name)
+        public static ServiceKey Create(Type type, string name)
         {
             return new ServiceKey(type, name, null);
         }
@@ -101,7 +83,7 @@ namespace Alioth.Framework
         /// <param name="name">An <c>System.String</c> that specifies the name of the type of service object to get.</param>
         /// <param name="version">An <c>System.String</c> that specifies the version of the type of service object type to get.</param>
         /// <returns>A new instance of the struct <c>Alioth.Framework.ServiceKey</c>.</returns>
-        public static ServiceKey Create(Type type, String name, String version)
+        public static ServiceKey Create(Type type, string name, string version)
         {
             return new ServiceKey(type, name, version);
         }
@@ -112,7 +94,7 @@ namespace Alioth.Framework
         /// <param name="key1">The first object to compare.</param>
         /// <param name="key2">The second object to compare.</param>
         /// <returns>true if both <c>Alioth.Framework.ServiceKey</c> objects have the same <c>Alioth.Framework.ServiceKey</c> value; otherwise, false.</returns>
-        public static Boolean operator ==(ServiceKey key1, ServiceKey key2)
+        public static bool operator ==(ServiceKey key1, ServiceKey key2)
         {
             return key1.Equals(key2);
         }
@@ -123,7 +105,7 @@ namespace Alioth.Framework
         /// <param name="key1">The first object to compare.</param>
         /// <param name="key2">The second object to compare.</param>
         /// <returns>true if both <c>Alioth.Framework.ServiceKey</c> objects refer to different service key; otherwise, false.</returns>
-        public static Boolean operator !=(ServiceKey key1, ServiceKey key2)
+        public static bool operator !=(ServiceKey key1, ServiceKey key2)
         {
             return !key1.Equals(key2);
         }
@@ -133,18 +115,18 @@ namespace Alioth.Framework
         /// </summary>
         /// <param name="obj">An object to compare to the current <c>Alioth.Framework.ServiceKey</c> object.</param>
         /// <returns>true if both <c>Alioth.Framework.ServiceKey</c> objects have the same <c>Alioth.Framework.ServiceKey</c> value; otherwise, false.</returns>
-        public override Boolean Equals(object obj)
+        public override bool Equals(object obj)
         {
-            if (Object.ReferenceEquals(obj, null))
+            if (obj is null)
             {
                 return false;
             }
-            if (obj.GetType() == this.GetType())
+            if (obj.GetType() == GetType())
             {
-                ServiceKey key = (ServiceKey)obj;
-                return this.type.Equals(key.type)
-                    && this.name.Equals(key.name, StringComparison.OrdinalIgnoreCase)
-                    && this.version.Equals(key.version, StringComparison.OrdinalIgnoreCase);
+                var key = (ServiceKey)obj;
+                return Type.Equals(key.Type)
+                    && Name.Equals(key.Name, StringComparison.OrdinalIgnoreCase)
+                    && Version.Equals(key.Version, StringComparison.OrdinalIgnoreCase);
             }
             return false;
         }
@@ -155,7 +137,7 @@ namespace Alioth.Framework
         /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
         {
-            return hashCode;
+            return _hashCode;
         }
 
         /// <summary>
@@ -164,7 +146,7 @@ namespace Alioth.Framework
         /// <returns>A string representation of a <c>Alioth.Framework.ServiceKey</c> object.</returns>
         public override string ToString()
         {
-            return String.Format("Type:{0}, Name:{1}, Version:{2}", this.type.Name, this.name, this.version);
+            return string.Format(CultureInfo.InvariantCulture, "Type:{0}, Name:{1}, Version:{2}", Type.Name, Name, Version);
         }
     }
 }

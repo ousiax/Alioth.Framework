@@ -9,15 +9,15 @@ using System;
 
 namespace Alioth.Framework.Tests
 {
-    [ServiceTypeAtrribute(typeof(ICalculatorService))]
+    [ServiceTypeAttribute(typeof(ICalculatorService))]
     class ParameterInjectionCalculatorService : ICalculatorService
     {
         private IAdditionService addition;
         private ISubtractionService subtraction;
 
         public ParameterInjectionCalculatorService(
-            [DepedencyAtrribute(typeof(IAdditionService))]IAdditionService addition,
-            [DepedencyAtrribute(typeof(ISubtractionService))]ISubtractionService subtraction)
+            [DepedencyAttribute(typeof(IAdditionService))]IAdditionService addition,
+            [DepedencyAttribute(typeof(ISubtractionService))]ISubtractionService subtraction)
         {
             this.addition = addition;
             this.subtraction = subtraction;

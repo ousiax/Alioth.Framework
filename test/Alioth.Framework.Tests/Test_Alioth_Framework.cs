@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+
 using Xunit;
 
 namespace Alioth.Framework.Tests
@@ -32,7 +33,6 @@ namespace Alioth.Framework.Tests
 
         [Fact]
         public void TestGetService()
-
         {
             IAdditionService addition = container.GetService(typeof(IAdditionService)) as IAdditionService;
             Assert.NotNull(addition);
@@ -43,7 +43,6 @@ namespace Alioth.Framework.Tests
 
         [Fact]
         public void TestPropertyInjection()
-
         {
             ICalculatorService calc = container.GetService(typeof(ICalculatorService)) as ICalculatorService;
             Assert.NotNull(calc);
@@ -56,10 +55,10 @@ namespace Alioth.Framework.Tests
             Assert.Equal(2, calc.Subtract(3, 1));
 
             Assert.Throws(typeof(KeyNotFoundException), () =>
+            {
+                container.GetService<ICalculatorService>("KeyNotFoundException");
+            });
 
-                {
-                    container.GetService<ICalculatorService>("KeyNotFoundException");
-                });
             Assert.Throws(typeof(KeyNotFoundException), () =>
 
                 {

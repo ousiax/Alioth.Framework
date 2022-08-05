@@ -7,7 +7,9 @@
 
 using System;
 using System.IO;
+
 using Alioth.Framework.Config;
+
 using Newtonsoft.Json;
 
 namespace Alioth.Framework
@@ -25,22 +27,16 @@ namespace Alioth.Framework
         /// <param name="container">A <c>Alioth.Framework.IAliothServiceContainer</c> will be applied.</param>
         /// <param name="path">The path of the metadata file.</param>
         /// <returns>A object of <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
-        public static IAliothServiceContainer Apply(this IAliothServiceContainer container, String path)
+        public static IAliothServiceContainer Apply(this IAliothServiceContainer container, string path)
         {
-            #region precondition
             if (path == null)
             {
-                throw new ArgumentNullException("path");
+                throw new ArgumentNullException(nameof(path));
             }
             if (!File.Exists(path))
             {
-#if NET451
-                throw new FileNotFoundException("ContainerExtension.Apply: configuration file not be found.", path);
-#elif DOTNET5_4
                 throw new ArgumentException("ContainerExtension.Apply: configuration file not be found.", path);
-#endif
             }
-            #endregion
             using (StreamReader reader = File.OpenText(path))
             {
                 container.Apply(reader);
@@ -56,12 +52,10 @@ namespace Alioth.Framework
         /// <returns>A object of <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, Stream stream)
         {
-            #region precondition
             if (stream == null)
             {
-                throw new ArgumentNullException("stream");
+                throw new ArgumentNullException(nameof(stream));
             }
-            #endregion
             return container.Apply(new StreamReader(stream));
         }
 
@@ -73,12 +67,10 @@ namespace Alioth.Framework
         /// <returns>A object of <c>Alioth.Framework.IAliothServiceContainer</c>.</returns>
         public static IAliothServiceContainer Apply(this IAliothServiceContainer container, StreamReader reader)
         {
-            #region precondition
             if (reader == null)
             {
-                throw new ArgumentNullException("path");
+                throw new ArgumentNullException(nameof(reader));
             }
-            #endregion
             var json = reader.ReadToEnd();
             var serviceContainer = JsonConvert.DeserializeObject<ServiceContainer>(json);
             foreach (var dep in serviceContainer.Services)

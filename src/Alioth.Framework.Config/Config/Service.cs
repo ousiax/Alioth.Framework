@@ -5,7 +5,6 @@
  *
 */
 
-using System;
 using System.Collections.Generic;
 
 namespace Alioth.Framework.Config
@@ -15,74 +14,41 @@ namespace Alioth.Framework.Config
     /// </summary>
     public class Service
     {
-        private String type;
-        private String name;
-        private String version;
-        private String description;
-        private IDictionary<String, String> parameters;
-        private IDictionary<String, String> properties;
-
         /// <summary>
         /// Gets or set the type of the serivce object class.
         /// </summary>
-        public String Type
-        {
-            get { return type; }
-            set { type = value; }
-        }
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the serivce type.
         /// </summary>
-        public String Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the version of the serivce type.
         /// </summary>
-        public String Version
-        {
-            get { return version; }
-            set { version = value; }
-        }
+        public string Version { get; set; }
 
         /// <summary>
         /// Gets or sets the description information of the serivce type.
         /// </summary>
-        public String Description
-        {
-            get { return description; }
-            set { description = value; }
-        }
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the parameters dictionary of the serivce type.
         /// </summary>
-        public IDictionary<String, String> Parameters
-        {
-            get { return parameters; }
-            set { parameters = value; }
-        }
+        public IDictionary<string, string> Parameters { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Gets or sets the properties dictionary of the serivce type.
         /// </summary>
-        public IDictionary<String, String> Properties
-        {
-            get { return properties; }
-            set { properties = value; }
-        }
+        public IDictionary<string, string> Properties { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
         ///  Initializes a new instance of the class <c>Alioth.Framework.Config.Service</c>.
         /// </summary>
         public Service()
         {
-            this.parameters = new Dictionary<String, String>();
-            this.properties = new Dictionary<String, String>();
         }
     }
 }

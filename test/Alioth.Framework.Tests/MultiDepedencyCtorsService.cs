@@ -9,15 +9,15 @@ using System;
 
 namespace Alioth.Framework.Tests
 {
-    [ServiceTypeAtrribute(typeof(IAdditionService))]
+    [ServiceTypeAttribute(typeof(IAdditionService))]
     class MultiDepedencyCtorsService : IAdditionService
     {
-        [DepedencyAtrribute]
+        [DepedencyAttribute]
         public MultiDepedencyCtorsService()
         {
         }
 
-        [DepedencyAtrribute]
+        [DepedencyAttribute]
         public MultiDepedencyCtorsService(int x)
         {
         }

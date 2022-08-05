@@ -7,7 +7,7 @@
 
 namespace Alioth.Framework.Tests
 {
-    [ServiceTypeAtrribute(typeof(IMessageService), ReferenceType.Singleton)]
+    [ServiceTypeAttribute(typeof(IMessageService), ReferenceType.Singleton)]
     class MessageService : IMessageService
     {
         private string message;

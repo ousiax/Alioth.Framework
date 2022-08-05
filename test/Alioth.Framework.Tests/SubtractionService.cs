@@ -7,7 +7,7 @@
 
 namespace Alioth.Framework.Tests
 {
-    [ServiceTypeAtrribute(typeof(ISubtractionService))]
+    [ServiceTypeAttribute(typeof(ISubtractionService))]
     class SubtractionService : ISubtractionService
     {
         public int Subtract(int x, int y)
