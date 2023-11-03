@@ -1,6 +1,7 @@
-[![Build Status](https://travis-ci.org/qqbuby/alioth.framework.svg?branch=develop)](https://travis-ci.org/qqbuby/alioth.framework)
+![Build Status](https://github.com/ousiax/Alioth.Framework/actions/workflows/ci.yml/badge.svg?branch=main)
 
 # Alioth Framework
+
 A lightweight IoC container that implemented with .NET.
 
 ### A simple demo
