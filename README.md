@@ -1,3 +1,5 @@
+NOTE: this project is used as personal study, please use others in production, such as [Microsoft.Extensions.DependencyInjection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection).
+
 ![Build Status](https://github.com/ousiax/Alioth.Framework/actions/workflows/ci.yml/badge.svg?branch=main)
 
 # Alioth Framework
